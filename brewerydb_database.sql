@@ -7,7 +7,7 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 -- -----------------------------------------------------
 -- Schema brewery_db
 -- -----------------------------------------------------
-
+DROP TABLE IF EXISTS brewery_db
 -- -----------------------------------------------------
 -- Schema brewery_db
 -- -----------------------------------------------------
