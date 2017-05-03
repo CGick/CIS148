@@ -7,7 +7,8 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 -- -----------------------------------------------------
 -- Schema brewery_db
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS brewery_db
+DROP SCHEMA IF EXISTS `brewery_db` ;
+
 -- -----------------------------------------------------
 -- Schema brewery_db
 -- -----------------------------------------------------
@@ -15,9 +16,9 @@ CREATE SCHEMA IF NOT EXISTS `brewery_db` DEFAULT CHARACTER SET utf8 ;
 USE `brewery_db` ;
 
 -- -----------------------------------------------------
--- Table `brewery_db`.`place_types`
+-- Table `place_types`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `brewery_db`.`place_types` (
+CREATE TABLE IF NOT EXISTS `place_types` (
   `place_type_id` INT NOT NULL AUTO_INCREMENT,
   `place_type_dscp` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`place_type_id`))
@@ -25,9 +26,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `brewery_db`.`places`
+-- Table `places`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `brewery_db`.`places` (
+CREATE TABLE IF NOT EXISTS `places` (
   `place_id` INT NOT NULL AUTO_INCREMENT,
   `place_type` INT NOT NULL,
   `place_name` VARCHAR(50) NOT NULL,
@@ -35,21 +36,20 @@ CREATE TABLE IF NOT EXISTS `brewery_db`.`places` (
   `address_line2` VARCHAR(50) NULL,
   `city` VARCHAR(45) NOT NULL,
   `state` CHAR(2) NOT NULL,
-  `zip_code` INT NOT NULL,
   PRIMARY KEY (`place_id`),
   INDEX `fk_place_type_idx` (`place_type` ASC),
   CONSTRAINT `fk_place_type`
     FOREIGN KEY (`place_type`)
-    REFERENCES `brewery_db`.`place_types` (`place_type_id`)
+    REFERENCES `place_types` (`place_type_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `brewery_db`.`locations`
+-- Table `locations`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `brewery_db`.`locations` (
+CREATE TABLE IF NOT EXISTS `locations` (
   `place_id` INT NOT NULL,
   `lat` DECIMAL(6,4) NOT NULL,
   `long` DECIMAL(7,4) NOT NULL,
@@ -58,9 +58,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `brewery_db`.`drinks`
+-- Table `drinks`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `brewery_db`.`drinks` (
+CREATE TABLE IF NOT EXISTS `drinks` (
   `drink_id` INT NOT NULL AUTO_INCREMENT,
   `maker_id` INT NOT NULL,
   `drink_name` VARCHAR(45) NOT NULL,
@@ -68,16 +68,16 @@ CREATE TABLE IF NOT EXISTS `brewery_db`.`drinks` (
   INDEX `fk_maker_idx` (`maker_id` ASC),
   CONSTRAINT `fk_maker`
     FOREIGN KEY (`maker_id`)
-    REFERENCES `brewery_db`.`places` (`place_id`)
+    REFERENCES `places` (`place_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `brewery_db`.`drink_types`
+-- Table `drink_types`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `brewery_db`.`drink_types` (
+CREATE TABLE IF NOT EXISTS `drink_types` (
   `drink_type_id` INT NOT NULL AUTO_INCREMENT,
   `drink_type_dscp` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`drink_type_id`))
@@ -85,9 +85,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `brewery_db`.`server_types`
+-- Table `server_types`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `brewery_db`.`server_types` (
+CREATE TABLE IF NOT EXISTS `server_types` (
   `serve_type_id` INT NOT NULL AUTO_INCREMENT,
   `serve_type_dscp` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`serve_type_id`))
@@ -95,9 +95,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `brewery_db`.`places_drinks`
+-- Table `places_drinks`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `brewery_db`.`places_drinks` (
+CREATE TABLE IF NOT EXISTS `places_drinks` (
   `place_id` INT NOT NULL,
   `drink_id` INT NOT NULL,
   `serve_type` INT NULL,
@@ -107,26 +107,26 @@ CREATE TABLE IF NOT EXISTS `brewery_db`.`places_drinks` (
   INDEX `fk_server_type_idx` (`serve_type` ASC),
   CONSTRAINT `fk_place_id`
     FOREIGN KEY (`place_id`)
-    REFERENCES `brewery_db`.`places` (`place_id`)
+    REFERENCES `places` (`place_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_drink_id`
     FOREIGN KEY (`drink_id`)
-    REFERENCES `brewery_db`.`drinks` (`drink_id`)
+    REFERENCES `drinks` (`drink_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_server_type`
     FOREIGN KEY (`serve_type`)
-    REFERENCES `brewery_db`.`server_types` (`serve_type_id`)
+    REFERENCES `server_types` (`serve_type_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `brewery_db`.`drink_status`
+-- Table `drink_status`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `brewery_db`.`drink_status` (
+CREATE TABLE IF NOT EXISTS `drink_status` (
   `drink_id` INT NOT NULL,
   `drink_type_id` INT NOT NULL,
   `drink_abv` DECIMAL(5,2) NULL,
@@ -136,12 +136,12 @@ CREATE TABLE IF NOT EXISTS `brewery_db`.`drink_status` (
   INDEX `fk_drink_type_idx` (`drink_type_id` ASC),
   CONSTRAINT `fk_drink_id`
     FOREIGN KEY (`drink_id`)
-    REFERENCES `brewery_db`.`drinks` (`drink_id`)
+    REFERENCES `drinks` (`drink_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_drink_type`
     FOREIGN KEY (`drink_type_id`)
-    REFERENCES `brewery_db`.`drink_types` (`drink_type_id`)
+    REFERENCES `drink_types` (`drink_type_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
