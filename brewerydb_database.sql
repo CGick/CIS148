@@ -43,6 +43,7 @@ CREATE TABLE IF NOT EXISTS `places` (
   `address_line2` VARCHAR(50) NULL,
   `city` VARCHAR(45) NOT NULL,
   `state` CHAR(2) NOT NULL,
+  `zip_code` INT NOT NULL,
   PRIMARY KEY (`place_id`),
   INDEX `fk_place_type_idx` (`place_type` ASC),
   CONSTRAINT `fk_place_type`
@@ -54,8 +55,9 @@ ENGINE = InnoDB;
 
 -- Add data to Places table
 
-INSERT INTO places(place_type)
-VALUES()
+INSERT INTO places(place_type, place_name, address_line1, address_line2, city, state, zip_code)
+VALUES
+	(1, 'Dog Beverage Company', '1203 New Windsor Rd', 'Westminster', 'MD', 21158)
 
 
 -- -----------------------------------------------------
