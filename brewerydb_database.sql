@@ -24,6 +24,13 @@ CREATE TABLE IF NOT EXISTS `place_types` (
   PRIMARY KEY (`place_type_id`))
 ENGINE = InnoDB;
 
+-- Add data to Place_Type table
+
+INSERT INTO place_types(place_type_dscp)
+VALUES('Brewery'),
+	  ('Distillery'),
+      ('Winery')
+
 
 -- -----------------------------------------------------
 -- Table `places`
@@ -44,6 +51,11 @@ CREATE TABLE IF NOT EXISTS `places` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
+
+-- Add data to Places table
+
+INSERT INTO places(place_type)
+VALUES()
 
 
 -- -----------------------------------------------------
