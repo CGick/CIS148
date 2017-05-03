@@ -28,8 +28,9 @@ ENGINE = InnoDB;
 
 INSERT INTO place_types(place_type_dscp)
 VALUES('Brewery'),
-	  ('Distillery'),
-      ('Winery')
+	  ('Bars'),
+      ('Winery'),
+      ('Store')
 
 
 -- -----------------------------------------------------
