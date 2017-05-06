@@ -63,10 +63,16 @@ INSERT INTO
 VALUES
     (1, 1, 'Jailbreak Brewing Company', '9445 Washington Blvd N', 'STE F', 'Laurel', 'MD', 20723),
     (2, 1, 'Appalachian Brewing Company', '70 Presidential Circle', NULL, 'Gettysburg', 'PA', 17325),
-    (3, 1, ''),
+    (3, 1, '', '', NULL, '', '', ),
     (4, 3, 'Old Westminster Winery & Vineyard', '1550 Old Westminster Rd', NULL, 'Westminster', 'MD', 21157),
-    (5, 3, '', '', NULL, '', '', ),
-    (6, 3,),
+    (5, 3, 'Allegro Vineyards & Winery', '3475 Sechrist Rd', NULL, 'Brogue', 'PA', 17309),
+    (6, 3, 'Pearmund Cellars', '6190 Georgetown Rd', NULL, 'Broad Run', 'VA', 20137),
+    (7, 2, 'The Owl Bar', '1 E Chase St', NULL, 'Baltimore', 'MD', 21202),
+    (8, 2, 'Water Way Bar & Grill', '220 West Philadelphia Street', NULL, 'York', 'PA', 17401),
+    (9, 2, 'Screwtop Wine Bar', '1025 North Filmore Street', NULL, 'Arlington', 'VA', 22201),
+    (10, 4, '', '', NULL, '', '', ),
+    (11, 4, '', '', NULL, '', '', ),
+    (12, 4, '', '', NULL, '', '', )
 
 
 -- -----------------------------------------------------
@@ -86,7 +92,17 @@ INSERT INTO
 	locations(place_id, lat, long)
 VALUES
     (1, 39.1241, -76.8230),
-    (2, 39.8426, -77.1919)
+    (2, 39.8426, -77.1919),
+    (3, ),
+    (4, 39.5319, -77.0342),
+    (5, 39.8437, -76.4767),
+    (6, 38.7834, -77.7390),
+    (7, 39.3023, -76.6155),
+    (8, 39.9621, -76.7335),
+    (9, 38.8854, -77.0927),
+    (10, , ),
+    (11, , ),
+    (12, , ),
 
 
 -- -----------------------------------------------------
