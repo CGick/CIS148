@@ -63,7 +63,7 @@ INSERT INTO
 VALUES
     (1, 1, 'Jailbreak Brewing Company', '9445 Washington Blvd N', 'STE F', 'Laurel', 'MD', 20723),
     (2, 1, 'Appalachian Brewing Company', '70 Presidential Circle', NULL, 'Gettysburg', 'PA', 17325),
-    (3, 1, ''),
+    (3, 1, 'Forge Brew Works', '8532 Terminal Rd', 'Ste. LMN', 'Lorton', 'Virginia', 22079),
     (4, 3, 'Old Westminster Winery & Vineyard', '1550 Old Westminster Rd', NULL, 'Westminster', 'MD', 21157),
     (5, 3, '', '', NULL, '', '', ),
     (6, 3,),
@@ -86,7 +86,8 @@ INSERT INTO
 	locations(place_id, lat, long)
 VALUES
     (1, 39.1241, -76.8230),
-    (2, 39.8426, -77.1919)
+    (2, 39.8426, -77.1919),
+    (3, 38.7275, -77.1974)
 
 
 -- -----------------------------------------------------
