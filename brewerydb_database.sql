@@ -63,7 +63,7 @@ INSERT INTO
 VALUES
     (1, 1, 'Jailbreak Brewing Company', '9445 Washington Blvd N', 'STE F', 'Laurel', 'MD', 20723),
     (2, 1, 'Appalachian Brewing Company', '70 Presidential Circle', NULL, 'Gettysburg', 'PA', 17325),
-    (3, 1, 'Forge Brew Works', '8532 Terminal Rd', 'Ste. LMN', 'Lorton', 'Virginia', 22079),
+    (3, 1, 'Forge Brew Works', '8532 Terminal Rd', 'Ste. LMN', 'Lorton', 'VA', 22079),
     (4, 3, 'Old Westminster Winery & Vineyard', '1550 Old Westminster Rd', NULL, 'Westminster', 'MD', 21157),
     (5, 3, 'Allegro Vineyards & Winery', '3475 Sechrist Rd', NULL, 'Brogue', 'PA', 17309),
     (6, 3, 'Pearmund Cellars', '6190 Georgetown Rd', NULL, 'Broad Run', 'VA', 20137),
@@ -89,11 +89,11 @@ ENGINE = InnoDB;
 -- Insert data into locations
 -- ------------------------------------------------------
 INSERT INTO 
-	locations(place_id, lat, long)
+	locations(place_id, lat, `long`)
 VALUES
     (1, 39.1241, -76.8230),
     (2, 39.8426, -77.1919),
-    (3, 38.7275, -77.1974)
+    (3, 38.7275, -77.1974),
     (4, 39.5319, -77.0342),
     (5, 39.8437, -76.4767),
     (6, 38.7834, -77.7390),
@@ -179,7 +179,7 @@ VALUES
 -- -----------------------------------------------------
 -- Table `server_types`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `serve _types` (
+CREATE TABLE IF NOT EXISTS `serve_types` (
   `serve_type_id` INT NOT NULL AUTO_INCREMENT,
   `serve_type_dscp` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`serve_type_id`))
@@ -328,7 +328,7 @@ CREATE TABLE IF NOT EXISTS `drink_stats` (
   `drink_variation` VARCHAR(45) NULL,
   INDEX `fk_drink_id_idx` (`drink_id` ASC),
   INDEX `fk_drink_type_idx` (`drink_type_id` ASC),
-  CONSTRAINT `fk_drink_id`
+  CONSTRAINT `fk_id_drink`
     FOREIGN KEY (`drink_id`)
     REFERENCES `drinks` (`drink_id`)
     ON DELETE NO ACTION
