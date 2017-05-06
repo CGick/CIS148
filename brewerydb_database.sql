@@ -31,7 +31,7 @@ INSERT INTO place_types(place_type_id, place_type_dscp)
 VALUES(1, 'Brewery'),
 	  (2, 'Bars'),
       (3, 'Winery'),
-      (4, 'Store')
+      (4, 'Store');
 
 
 -- -----------------------------------------------------
@@ -72,7 +72,7 @@ VALUES
     (9, 2, 'Screwtop Wine Bar', '1025 North Filmore Street', NULL, 'Arlington', 'VA', 22201),
     (10, 4, 'Total Discount Liquors', '1438 Liberty Road', NULL, 'Eldersburg', 'MD', 21784),
     (11, 4, 'Shrewsbury Beer & Soda', '537 S Main St', NULL, 'Shrewsbury', 'PA', 17361),
-    (12, 4, 'Virginia ABC Store', '11083 Marsh Rd', NULL, 'Bealeton', 'VA', 22712)
+    (12, 4, 'Virginia ABC Store', '11083 Marsh Rd', NULL, 'Bealeton', 'VA', 22712);
 
 
 -- -----------------------------------------------------
@@ -102,7 +102,7 @@ VALUES
     (9, 38.8854, -77.0927),
     (10, 39.4032, -76.9435),
     (11, 39.7540, -76.6765),
-    (12, 38.5792, -77.7653)
+    (12, 38.5792, -77.7653);
 
 
 -- -----------------------------------------------------
@@ -156,7 +156,7 @@ VALUES
     (27, 3, 'Farmhouse'),
     (28, 3, 'Forged Gold'),
     (29, 3, 'Sitobine'),
-    (30, 3, 'Ryes Up and Stout')
+    (30, 3, 'Ryes Up and Stout');
     
 
 -- -----------------------------------------------------
@@ -175,7 +175,7 @@ INSERT INTO
 	drink_types(drink_type_id, drink_type_dscp)
 VALUES
 	(1, 'Wine'),
-    (2, 'Beer')
+    (2, 'Beer');
 -- -----------------------------------------------------
 -- Table `server_types`
 -- -----------------------------------------------------
@@ -196,7 +196,7 @@ VALUES
     (3, 'Can'),
     (4, '6 Pack'),
     (5, '12 Pack'),
-    (6, 'Glass')
+    (6, 'Glass');
 
 -- -----------------------------------------------------
 -- Table `places_drinks`
@@ -315,7 +315,7 @@ VALUES
     (12, 7, 1, 19.28),
     (12, 9, 1, 21.28),
     (12, 10, 1, 19.38),
-    (12, 11, 1, 51.29)
+    (12, 11, 1, 51.29);
     
 -- -----------------------------------------------------
 -- Table `drink_stats`
@@ -375,7 +375,7 @@ VALUES
     (27, 2, 6.5, NULL, 'American Saison'),
     (28, 2, 5.2, NULL, 'Dortmunder Lager'),
     (29, 2, 7.5, NULL, 'Hoppy Saison'),
-    (30, 2, 7.5, NULL, 'Belgian Mild Stout')
+    (30, 2, 7.5, NULL, 'Belgian Mild Stout');
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
