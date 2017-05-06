@@ -142,6 +142,21 @@ VALUES
     (13, 6, '2011 Late harvest Traminette'),
     (14, 6, '2014 Ameritage'),
     (15, 6, 'Black Ops'),
+    (16, 1, 'Big Punisher'),
+    (17, 1, 'Feed the Monkey'),
+    (18, 1, 'Poor Righteous'),
+    (19, 1, 'The Infinite'),
+    (20, 1, 'Welcome to Scoville'),
+	(21, 2, 'Aero-Head Bock'),
+    (22, 2, 'Trail Blaze Maple Brown Ale'),
+    (23, 2, 'Chocolate Avenue Stout'),
+    (24, 2, 'Outta Focus Double IPA'),
+    (25, 2, 'Water Gap Wheat'),
+    (26, 3, 'Belgian Blonde'),
+    (27, 3, 'Farmhouse'),
+    (28, 3, 'Forged Gold'),
+    (29, 3, 'Sitobine'),
+    (30, 3, 'Ryes Up and Stout')
     
 
 -- -----------------------------------------------------
@@ -159,7 +174,8 @@ ENGINE = InnoDB;
 INSERT INTO 
 	drink_types(drink_type_id, drink_type_dscp)
 VALUES
-	(1, 'Wine')
+	(1, 'Wine'),
+    (2, 'Beer')
 -- -----------------------------------------------------
 -- Table `server_types`
 -- -----------------------------------------------------
@@ -175,7 +191,11 @@ ENGINE = InnoDB;
 INSERT INTO 
 	serve_types(serve_type_id, serve_type_dscp)
 VALUES
-	(1, 'Bottle')
+	(1, 'Bottle'),
+    (2, 'On Tap'),
+    (3, 'Can'),
+    (4, '6 Pack'),
+    (5, '12 Pack')
 
 -- -----------------------------------------------------
 -- Table `places_drinks`
@@ -270,7 +290,22 @@ VALUES
     (12, 1, 11.90, NULL, 'White, Dry'),
     (13, 1, 13.10, NULL, 'White, Sweet'),
     (14, 1, 12.80, NULL, 'White, Aged 14 months'),
-    (15, 1, 13.80, NULL, 'Red, Aged 35 months')
+    (15, 1, 13.80, NULL, 'Red, Aged 35 months'),
+    (16, 2, 8.5, 93, 'Double IPA'),
+    (17, 2, 5.6, 14, 'Orange Hefeweizen'),
+    (18, 2, 6.5, 55, 'American IPA'),
+    (19, 2, 5.0, 19, 'Amber Ale'),
+    (20, 2, 6.9, 74, 'Jalapeno IPA'),
+    (21, 2, 7.0, 25, 'German-style bock'),
+    (22, 2, 6.73, 30, 'American style brown ale'),
+    (23, 2, 5.1, 19, 'Chocolate stout'),
+    (24, 2, 8, 80, 'Double IPA'),
+    (25, 2, 4.78, 15, 'American style wheat'),
+    (26, 2, 7.2, NULL, 'Belgian Blonde Ale'),
+    (27, 2, 6.5, NULL, 'American Saison'),
+    (28, 2, 5.2, NULL, 'Dortmunder Lager'),
+    (29, 2, 7.5, NULL, 'Hoppy Saison'),
+    (30, 2, 7.5, NULL, 'Belgian Mild Stout')
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
