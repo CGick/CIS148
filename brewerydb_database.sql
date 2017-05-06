@@ -65,8 +65,14 @@ VALUES
     (2, 1, 'Appalachian Brewing Company', '70 Presidential Circle', NULL, 'Gettysburg', 'PA', 17325),
     (3, 1, 'Forge Brew Works', '8532 Terminal Rd', 'Ste. LMN', 'Lorton', 'Virginia', 22079),
     (4, 3, 'Old Westminster Winery & Vineyard', '1550 Old Westminster Rd', NULL, 'Westminster', 'MD', 21157),
-    (5, 3, '', '', NULL, '', '', ),
-    (6, 3,),
+    (5, 3, 'Allegro Vineyards & Winery', '3475 Sechrist Rd', NULL, 'Brogue', 'PA', 17309),
+    (6, 3, 'Pearmund Cellars', '6190 Georgetown Rd', NULL, 'Broad Run', 'VA', 20137),
+    (7, 2, 'The Owl Bar', '1 E Chase St', NULL, 'Baltimore', 'MD', 21202),
+    (8, 2, 'Water Way Bar & Grill', '220 West Philadelphia Street', NULL, 'York', 'PA', 17401),
+    (9, 2, 'Screwtop Wine Bar', '1025 North Filmore Street', NULL, 'Arlington', 'VA', 22201),
+    (10, 4, '', '', NULL, '', '', ),
+    (11, 4, '', '', NULL, '', '', ),
+    (12, 4, '', '', NULL, '', '', )
 
 
 -- -----------------------------------------------------
@@ -88,6 +94,15 @@ VALUES
     (1, 39.1241, -76.8230),
     (2, 39.8426, -77.1919),
     (3, 38.7275, -77.1974)
+    (4, 39.5319, -77.0342),
+    (5, 39.8437, -76.4767),
+    (6, 38.7834, -77.7390),
+    (7, 39.3023, -76.6155),
+    (8, 39.9621, -76.7335),
+    (9, 38.8854, -77.0927),
+    (10, , ),
+    (11, , ),
+    (12, , ),
 
 
 -- -----------------------------------------------------
@@ -112,6 +127,22 @@ ENGINE = InnoDB;
 INSERT INTO 
 	drinks(drink_id, maker_id, drink_name)
 VALUES
+	(1, 4, '2014 Anthem'),
+    (2, 4, '2015 Chardonnay'),
+    (3, 4, '2014 Farmer Fizz'),
+    (4, 4, 'Revelry, Second Edition'),
+    (5, 4, 'Greenstone, Third Edition'),
+    (6, 5, '2016 Prelude'),
+    (7, 5, '2014 Sonata'),
+    (8, 5, '2013 Bridge'),
+    (9, 5, 'Brut Rosé'),
+    (10, 5, '2013 Fanfare'),
+    (11, 6, '2014 Malbec Reserve'),
+    (12, 6, '2016 Vidal Blanc'),
+    (13, 6, '2011 Late harvest Traminette'),
+    (14, 6, '2014 Ameritage'),
+    (15, 6, 'Black Ops'),
+    
 
 -- -----------------------------------------------------
 -- Table `drink_types`
@@ -128,7 +159,7 @@ ENGINE = InnoDB;
 INSERT INTO 
 	drink_types(drink_type_id, drink_type_dscp)
 VALUES
-
+	(1, 'Wine')
 -- -----------------------------------------------------
 -- Table `server_types`
 -- -----------------------------------------------------
@@ -144,6 +175,7 @@ ENGINE = InnoDB;
 INSERT INTO 
 	serve_types(serve_type_id, serve_type_dscp)
 VALUES
+	(1, 'Bottle')
 
 -- -----------------------------------------------------
 -- Table `places_drinks`
@@ -179,7 +211,8 @@ ENGINE = InnoDB;
 INSERT INTO 
 	places_drinks(place_id, drink_id, serve_type, price)
 VALUES
-
+	()
+    
 -- -----------------------------------------------------
 -- Table `drink_stats`
 -- -----------------------------------------------------
@@ -209,6 +242,7 @@ ENGINE = InnoDB;
 INSERT INTO 
 	drink_stats(drink_id, drink_type_id, drink_abv, drink_ibu, drink_variation)
 VALUES
+	(1, 1, )
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
