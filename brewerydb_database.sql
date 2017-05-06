@@ -127,6 +127,22 @@ ENGINE = InnoDB;
 INSERT INTO 
 	drinks(drink_id, maker_id, drink_name)
 VALUES
+	(1, 4, '2014 Anthem'),
+    (2, 4, '2015 Chardonnay'),
+    (3, 4, '2014 Farmer Fizz'),
+    (4, 4, 'Revelry, Second Edition'),
+    (5, 4, 'Greenstone, Third Edition'),
+    (6, 5, '2016 Prelude'),
+    (7, 5, '2014 Sonata'),
+    (8, 5, '2013 Bridge'),
+    (9, 5, 'Brut Rosé'),
+    (10, 5, '2013 Fanfare'),
+    (11, 6, '2014 Malbec Reserve'),
+    (12, 6, '2016 Vidal Blanc'),
+    (13, 6, '2011 Late harvest Traminette'),
+    (14, 6, '2014 Ameritage'),
+    (15, 6, 'Black Ops'),
+    
 
 -- -----------------------------------------------------
 -- Table `drink_types`
@@ -143,7 +159,7 @@ ENGINE = InnoDB;
 INSERT INTO 
 	drink_types(drink_type_id, drink_type_dscp)
 VALUES
-
+	(1, 'Wine')
 -- -----------------------------------------------------
 -- Table `server_types`
 -- -----------------------------------------------------
@@ -159,6 +175,7 @@ ENGINE = InnoDB;
 INSERT INTO 
 	serve_types(serve_type_id, serve_type_dscp)
 VALUES
+	(1, 'Bottle')
 
 -- -----------------------------------------------------
 -- Table `places_drinks`
@@ -194,7 +211,8 @@ ENGINE = InnoDB;
 INSERT INTO 
 	places_drinks(place_id, drink_id, serve_type, price)
 VALUES
-
+	()
+    
 -- -----------------------------------------------------
 -- Table `drink_stats`
 -- -----------------------------------------------------
@@ -224,6 +242,7 @@ ENGINE = InnoDB;
 INSERT INTO 
 	drink_stats(drink_id, drink_type_id, drink_abv, drink_ibu, drink_variation)
 VALUES
+	(1, 1, )
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
