@@ -70,9 +70,9 @@ VALUES
     (7, 2, 'The Owl Bar', '1 E Chase St', NULL, 'Baltimore', 'MD', 21202),
     (8, 2, 'Water Way Bar & Grill', '220 West Philadelphia Street', NULL, 'York', 'PA', 17401),
     (9, 2, 'Screwtop Wine Bar', '1025 North Filmore Street', NULL, 'Arlington', 'VA', 22201),
-    (10, 4, '', '', NULL, '', '', ),
-    (11, 4, '', '', NULL, '', '', ),
-    (12, 4, '', '', NULL, '', '', )
+    (10, 4, 'Total Discount Liquors', '1438 Liberty Road', NULL, 'Eldersburg', 'MD', 21784),
+    (11, 4, 'Shrewsbury Beer & Soda', '537 S Main St', NULL, 'Shrewsbury', 'PA', 17361),
+    (12, 4, 'Virginia ABC Store', '11083 Marsh Rd', NULL, 'Bealeton', 'VA', 22712)
 
 
 -- -----------------------------------------------------
@@ -100,9 +100,9 @@ VALUES
     (7, 39.3023, -76.6155),
     (8, 39.9621, -76.7335),
     (9, 38.8854, -77.0927),
-    (10, , ),
-    (11, , ),
-    (12, , ),
+    (10, 39.4032, -76.9435),
+    (11, 39.7540, -76.6765),
+    (12, 38.5792, -77.7653)
 
 
 -- -----------------------------------------------------
