@@ -27,11 +27,11 @@ ENGINE = InnoDB;
 -- ------------------------------------------------------
 -- Insert data into Place_Type table
 -- ------------------------------------------------------
-INSERT INTO place_types(place_type_dscp)
-VALUES('Brewery'),
-	  ('Bars'),
-      ('Winery'),
-      ('Store')
+INSERT INTO place_types(place_type_id, place_type_dscp)
+VALUES(1, 'Brewery'),
+	  (2, 'Bars'),
+      (3, 'Winery'),
+      (4, 'Store')
 
 
 -- -----------------------------------------------------
@@ -59,10 +59,14 @@ ENGINE = InnoDB;
 -- Insert data into Places table
 -- ------------------------------------------------------
 INSERT INTO 
-	places(place_type, place_name, address_line1, address_line2, city, state, zip_code)
+	places(place_id, place_type, place_name, address_line1, address_line2, city, state, zip_code)
 VALUES
-    (1, 'Jailbreak Brewing Company', '9445 Washington Blvd N', 'STE F', 'Laurel', 'MD', 20723),
-    (1, 'Appalachian Brewing Company', '70 Presidential Circle', NULL, 'Gettysburg', 'PA', 17325),
+    (1, 1, 'Jailbreak Brewing Company', '9445 Washington Blvd N', 'STE F', 'Laurel', 'MD', 20723),
+    (2, 1, 'Appalachian Brewing Company', '70 Presidential Circle', NULL, 'Gettysburg', 'PA', 17325),
+    (3, 1, ''),
+    (4, 3, 'Old Westminster Winery & Vineyard', '1550 Old Westminster Rd', NULL, 'Westminster', 'MD', 21157),
+    (5, 3, '', '', NULL, '', '', ),
+    (6, 3,),
 
 
 -- -----------------------------------------------------
@@ -105,7 +109,7 @@ ENGINE = InnoDB;
 -- Insert data into drinks
 -- -----------------------------------------------------
 INSERT INTO 
-	drinks(maker_id, drink_name)
+	drinks(drink_id, maker_id, drink_name)
 VALUES
 
 -- -----------------------------------------------------
@@ -121,7 +125,7 @@ ENGINE = InnoDB;
 -- Insert data into drink_types
 -- -----------------------------------------------------
 INSERT INTO 
-	drink_types(drink_type_dscp)
+	drink_types(drink_type_id, drink_type_dscp)
 VALUES
 
 -- -----------------------------------------------------
@@ -137,7 +141,7 @@ ENGINE = InnoDB;
 -- Insert data into serve_types
 -- -----------------------------------------------------
 INSERT INTO 
-	serve_types(serve_type_dscp)
+	serve_types(serve_type_id, serve_type_dscp)
 VALUES
 
 -- -----------------------------------------------------
