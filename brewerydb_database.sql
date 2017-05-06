@@ -24,8 +24,9 @@ CREATE TABLE IF NOT EXISTS `place_types` (
   PRIMARY KEY (`place_type_id`))
 ENGINE = InnoDB;
 
--- Add data to Place_Type table
-
+-- ------------------------------------------------------
+-- Insert data into Place_Type table
+-- ------------------------------------------------------
 INSERT INTO place_types(place_type_dscp)
 VALUES('Brewery'),
 	  ('Bars'),
@@ -54,11 +55,14 @@ CREATE TABLE IF NOT EXISTS `places` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
--- Add data to Places table
-
-INSERT INTO places(place_type, place_name, address_line1, address_line2, city, state, zip_code)
+-- ------------------------------------------------------
+-- Insert data into Places table
+-- ------------------------------------------------------
+INSERT INTO 
+	places(place_type, place_name, address_line1, address_line2, city, state, zip_code)
 VALUES
-	(1, 'Dog Beverage Company', '1203 New Windsor Rd', 'Westminster', 'MD', 21158)
+    (1, 'Jailbreak Brewing Company', '9445 Washington Blvd N', 'STE F', 'Laurel', 'MD', 20723),
+    (1, 'Appalachian Brewing Company', '70 Presidential Circle', NULL, 'Gettysburg', 'PA', 17325),
 
 
 -- -----------------------------------------------------
@@ -70,6 +74,15 @@ CREATE TABLE IF NOT EXISTS `locations` (
   `long` DECIMAL(7,4) NOT NULL,
   INDEX `fk_place_id_idx` (`place_id` ASC))
 ENGINE = InnoDB;
+
+-- ------------------------------------------------------
+-- Insert data into locations
+-- ------------------------------------------------------
+INSERT INTO 
+	locations(place_id, lat, long)
+VALUES
+    (1, 39.1241, -76.8230),
+    (2, 39.8426, -77.1919)
 
 
 -- -----------------------------------------------------
@@ -88,6 +101,12 @@ CREATE TABLE IF NOT EXISTS `drinks` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+-- -----------------------------------------------------
+-- Insert data into drinks
+-- -----------------------------------------------------
+INSERT INTO 
+	drinks(maker_id, drink_name)
+VALUES
 
 -- -----------------------------------------------------
 -- Table `drink_types`
@@ -98,16 +117,28 @@ CREATE TABLE IF NOT EXISTS `drink_types` (
   PRIMARY KEY (`drink_type_id`))
 ENGINE = InnoDB;
 
+-- -----------------------------------------------------
+-- Insert data into drink_types
+-- -----------------------------------------------------
+INSERT INTO 
+	drink_types(drink_type_dscp)
+VALUES
 
 -- -----------------------------------------------------
 -- Table `server_types`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `server_types` (
+CREATE TABLE IF NOT EXISTS `serve _types` (
   `serve_type_id` INT NOT NULL AUTO_INCREMENT,
   `serve_type_dscp` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`serve_type_id`))
 ENGINE = InnoDB;
 
+-- -----------------------------------------------------
+-- Insert data into serve_types
+-- -----------------------------------------------------
+INSERT INTO 
+	serve_types(serve_type_dscp)
+VALUES
 
 -- -----------------------------------------------------
 -- Table `places_drinks`
@@ -137,11 +168,17 @@ CREATE TABLE IF NOT EXISTS `places_drinks` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+-- -----------------------------------------------------
+-- Insert data into places_drinks 
+-- -----------------------------------------------------
+INSERT INTO 
+	places_drinks(place_id, drink_id, serve_type, price)
+VALUES
 
 -- -----------------------------------------------------
--- Table `drink_status`
+-- Table `drink_stats`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `drink_status` (
+CREATE TABLE IF NOT EXISTS `drink_stats` (
   `drink_id` INT NOT NULL,
   `drink_type_id` INT NOT NULL,
   `drink_abv` DECIMAL(5,2) NULL,
@@ -161,6 +198,12 @@ CREATE TABLE IF NOT EXISTS `drink_status` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+-- -----------------------------------------------------
+-- Insert data into drink_stats table
+-- -----------------------------------------------------
+INSERT INTO 
+	drink_stats(drink_id, drink_type_id, drink_abv, drink_ibu, drink_variation)
+VALUES
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
