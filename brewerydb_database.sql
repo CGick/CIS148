@@ -211,7 +211,21 @@ ENGINE = InnoDB;
 INSERT INTO 
 	places_drinks(place_id, drink_id, serve_type, price)
 VALUES
-	()
+	(4, 1, 1, 40.00),
+    (4, 2, 1, 28.00),
+    (4, 3, 1, 35.00),
+    (4, 4, 1, 26.00),
+    (4, 5, 1, 30.00),
+    (5, 6, 1, 14.00),
+    (5, 7, 1, 16.00),
+    (5, 8, 1, 27.00),
+    (5, 9, 1, 18.00),
+    (5, 10, 1, 18.00),
+    (6, 11, 1, 42.00),
+    (6, 12, 1, 28.00),
+    (6, 13, 1, 29.00),
+    (6, 14, 1, 28.00),
+    (6, 15, 1, 42.00),
     
 -- -----------------------------------------------------
 -- Table `drink_stats`
@@ -242,7 +256,21 @@ ENGINE = InnoDB;
 INSERT INTO 
 	drink_stats(drink_id, drink_type_id, drink_abv, drink_ibu, drink_variation)
 VALUES
-	(1, 1, )
+	(1, 1, 13.50, NULL, 'Red, Aged 18 months'),
+    (2, 1, 12.30, NULL, 'White, Dry'),
+    (3, 1, 10.40, NULL, 'Sparkling/ Bubble Wine'),
+    (4, 1, 13.30, NULL, 'Rose, Aged 30 months'),
+    (5, 1, 12.80, NULL, 'White, Sweet'),
+    (6, 1, 12.50, NULL, 'Rose, Dry'),
+    (7, 1, 13.50, NULL, 'White, Dry'),
+    (8, 1, 13.90, NULL, 'Red, Aged 22 months'),
+    (9, 1, 10.20, NULL, 'Rose, Sparkling Wine'),
+    (10, 1, 11.90, NULL, 'White, Sweet'),
+    (11, 1, 12.20, NULL, 'Red, Sweet '),
+    (12, 1, 11.90, NULL, 'White, Dry'),
+    (13, 1, 13.10, NULL, 'White, Sweet'),
+    (14, 1, 12.80, NULL, 'White, Aged 14 months'),
+    (15, 1, 13.80, NULL, 'Red, Aged 35 months')
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
