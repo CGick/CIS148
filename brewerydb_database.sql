@@ -24,16 +24,6 @@ CREATE TABLE IF NOT EXISTS `place_types` (
   PRIMARY KEY (`place_type_id`))
 ENGINE = InnoDB;
 
--- ------------------------------------------------------
--- Insert data into Place_Type table
--- ------------------------------------------------------
-INSERT INTO place_types(place_type_id, place_type_dscp)
-VALUES(1, 'Brewery'),
-	  (2, 'Bars'),
-      (3, 'Winery'),
-      (4, 'Store');
-
-
 -- -----------------------------------------------------
 -- Table `places`
 -- -----------------------------------------------------
@@ -55,6 +45,113 @@ CREATE TABLE IF NOT EXISTS `places` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+-- -----------------------------------------------------
+-- Table `locations`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `locations` (
+  `place_id` INT NOT NULL,
+  `lat` DECIMAL(6,4) NOT NULL,
+  `long` DECIMAL(7,4) NOT NULL,
+  INDEX `fk_place_id_idx` (`place_id` ASC))
+ENGINE = InnoDB;
+
+-- -----------------------------------------------------
+-- Table `drinks`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `drinks` (
+  `drink_id` INT NOT NULL AUTO_INCREMENT,
+  `maker_id` INT NOT NULL,
+  `drink_name` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`drink_id`),
+  INDEX `fk_maker_idx` (`maker_id` ASC),
+  CONSTRAINT `fk_maker`
+    FOREIGN KEY (`maker_id`)
+    REFERENCES `places` (`place_id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+-- -----------------------------------------------------
+-- Table `drink_types`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `drink_types` (
+  `drink_type_id` INT NOT NULL AUTO_INCREMENT,
+  `drink_type_dscp` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`drink_type_id`))
+ENGINE = InnoDB;
+
+-- -----------------------------------------------------
+-- Table `serve_types`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `serve_types` (
+  `serve_type_id` INT NOT NULL AUTO_INCREMENT,
+  `serve_type_dscp` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`serve_type_id`))
+ENGINE = InnoDB;
+
+-- -----------------------------------------------------
+-- Table `places_drinks`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `places_drinks` (
+  `place_id` INT NOT NULL,
+  `drink_id` INT NOT NULL,
+  `serve_type` INT NULL,
+  `price` DECIMAL(6,2) NULL,
+  PRIMARY KEY (`place_id`, `drink_id`),
+  INDEX `fk_drink_id_idx` (`drink_id` ASC),
+  INDEX `fk_server_type_idx` (`serve_type` ASC),
+  CONSTRAINT `fk_place_id`
+    FOREIGN KEY (`place_id`)
+    REFERENCES `places` (`place_id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_drink_id`
+    FOREIGN KEY (`drink_id`)
+    REFERENCES `drinks` (`drink_id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_server_type`
+    FOREIGN KEY (`serve_type`)
+    REFERENCES `server_types` (`serve_type_id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+-- -----------------------------------------------------
+-- Table `drink_stats`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `drink_stats` (
+  `drink_id` INT NOT NULL,
+  `drink_type_id` INT NOT NULL,
+  `drink_abv` DECIMAL(5,2) NULL,
+  `drink_ibu` INT NULL,
+  `drink_variation` VARCHAR(45) NULL,
+  INDEX `fk_drink_id_idx` (`drink_id` ASC),
+  INDEX `fk_drink_type_idx` (`drink_type_id` ASC),
+  CONSTRAINT `fk_id_drink`
+    FOREIGN KEY (`drink_id`)
+    REFERENCES `drinks` (`drink_id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_drink_type`
+    FOREIGN KEY (`drink_type_id`)
+    REFERENCES `drink_types` (`drink_type_id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+-- ******************************************************************************************************************
+-- ******************************************************************************************************************
+   
+-- ------------------------------------------------------
+-- Insert data into Place_Type table
+-- ------------------------------------------------------
+INSERT INTO place_types(place_type_id, place_type_dscp)
+VALUES(1, 'Brewery'),
+	  (2, 'Bars'),
+      (3, 'Winery'),
+      (4, 'Store');
+ 
 -- ------------------------------------------------------
 -- Insert data into Places table
 -- ------------------------------------------------------
@@ -74,17 +171,6 @@ VALUES
     (11, 4, 'Shrewsbury Beer & Soda', '537 S Main St', NULL, 'Shrewsbury', 'PA', 17361),
     (12, 4, 'Virginia ABC Store', '11083 Marsh Rd', NULL, 'Bealeton', 'VA', 22712);
 
-
--- -----------------------------------------------------
--- Table `locations`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `locations` (
-  `place_id` INT NOT NULL,
-  `lat` DECIMAL(6,4) NOT NULL,
-  `long` DECIMAL(7,4) NOT NULL,
-  INDEX `fk_place_id_idx` (`place_id` ASC))
-ENGINE = InnoDB;
-
 -- ------------------------------------------------------
 -- Insert data into locations
 -- ------------------------------------------------------
@@ -103,23 +189,6 @@ VALUES
     (10, 39.4032, -76.9435),
     (11, 39.7540, -76.6765),
     (12, 38.5792, -77.7653);
-
-
--- -----------------------------------------------------
--- Table `drinks`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `drinks` (
-  `drink_id` INT NOT NULL AUTO_INCREMENT,
-  `maker_id` INT NOT NULL,
-  `drink_name` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`drink_id`),
-  INDEX `fk_maker_idx` (`maker_id` ASC),
-  CONSTRAINT `fk_maker`
-    FOREIGN KEY (`maker_id`)
-    REFERENCES `places` (`place_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
 
 -- -----------------------------------------------------
 -- Insert data into drinks
@@ -158,16 +227,6 @@ VALUES
     (29, 3, 'Sitobine'),
     (30, 3, 'Ryes Up and Stout');
     
-
--- -----------------------------------------------------
--- Table `drink_types`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `drink_types` (
-  `drink_type_id` INT NOT NULL AUTO_INCREMENT,
-  `drink_type_dscp` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`drink_type_id`))
-ENGINE = InnoDB;
-
 -- -----------------------------------------------------
 -- Insert data into drink_types
 -- -----------------------------------------------------
@@ -176,14 +235,6 @@ INSERT INTO
 VALUES
 	(1, 'Wine'),
     (2, 'Beer');
--- -----------------------------------------------------
--- Table `server_types`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `serve_types` (
-  `serve_type_id` INT NOT NULL AUTO_INCREMENT,
-  `serve_type_dscp` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`serve_type_id`))
-ENGINE = InnoDB;
 
 -- -----------------------------------------------------
 -- Insert data into serve_types
@@ -197,34 +248,6 @@ VALUES
     (4, '6 Pack'),
     (5, '12 Pack'),
     (6, 'Glass');
-
--- -----------------------------------------------------
--- Table `places_drinks`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `places_drinks` (
-  `place_id` INT NOT NULL,
-  `drink_id` INT NOT NULL,
-  `serve_type` INT NULL,
-  `price` DECIMAL(6,2) NULL,
-  PRIMARY KEY (`place_id`, `drink_id`),
-  INDEX `fk_drink_id_idx` (`drink_id` ASC),
-  INDEX `fk_server_type_idx` (`serve_type` ASC),
-  CONSTRAINT `fk_place_id`
-    FOREIGN KEY (`place_id`)
-    REFERENCES `places` (`place_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_drink_id`
-    FOREIGN KEY (`drink_id`)
-    REFERENCES `drinks` (`drink_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_server_type`
-    FOREIGN KEY (`serve_type`)
-    REFERENCES `server_types` (`serve_type_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
 
 -- -----------------------------------------------------
 -- Insert data into places_drinks 
@@ -316,29 +339,6 @@ VALUES
     (12, 9, 1, 21.28),
     (12, 10, 1, 19.38),
     (12, 11, 1, 51.29);
-    
--- -----------------------------------------------------
--- Table `drink_stats`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `drink_stats` (
-  `drink_id` INT NOT NULL,
-  `drink_type_id` INT NOT NULL,
-  `drink_abv` DECIMAL(5,2) NULL,
-  `drink_ibu` INT NULL,
-  `drink_variation` VARCHAR(45) NULL,
-  INDEX `fk_drink_id_idx` (`drink_id` ASC),
-  INDEX `fk_drink_type_idx` (`drink_type_id` ASC),
-  CONSTRAINT `fk_id_drink`
-    FOREIGN KEY (`drink_id`)
-    REFERENCES `drinks` (`drink_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_drink_type`
-    FOREIGN KEY (`drink_type_id`)
-    REFERENCES `drink_types` (`drink_type_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
 
 -- -----------------------------------------------------
 -- Insert data into drink_stats table
