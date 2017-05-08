@@ -12,7 +12,8 @@ WHERE drink_name = 'Feed the Monkey';
 
 
 SELECT
-	place_name
+	place_name,
+    count(drink_variation)
 FROM
 	places
 	JOIN places_drinks
@@ -21,3 +22,6 @@ FROM
 		USING(drink_id)
 	JOIN drink_stats
 		USING(drink_id)
+WHERE drink_variation like '%IPA%'
+	AND drink_type_id = 2
+GROUP BY place_name;
