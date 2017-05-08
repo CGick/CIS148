@@ -1,0 +1,17 @@
+1:
+Find all vendors that serve a specific drink in all states (subquery)	(All 3 states??)
+(Potentially 2 queries)
+(GROUP BY state)
+--Beth
+
+2:
+Find all vendors that serve a particular drink
+--Chris
+
+3:
+COUNT the number of specfic drink variation (diff IPA?) at specific vendor
+--Chris
+
+4:
+COUNT the number of beers in a specific bar that are on tap
+--Beth
